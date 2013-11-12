@@ -1,0 +1,84 @@
+ <div id="quickstart">
+
+h1. 1. Quickstart
+
+h2. 1.1 .htaccess Dateien
+
+Die .htaccess Dateien werden bei der Installation des Addons automatisch mit-installiert. Sollte dies laut Fehlermeldung nicht geklappt haben, müssen die Dateien "manuell installiert":index.php?page=rexseo&subpage=help&chapter=troubleshoot&highlight=htaccess+Dateien+manuell+installieren#other werden.
+
+1.1.1 *Installation in Unterverzeichnissen:*
+Falls die Redaxo Installation nicht im Webseiten-Root, sondern einem Unterverzeichnis erfolgt, muß dieses in der .htaccess Datei eingetragen werden:
+
+bc. RewriteBase /UNTERVERZEICHNIS
+
+*Hinweis:* Das Unterverzeichnis _nicht_ bei *$REX['SERVER']* mit eintragen! (siehe: 1.3 System Settings)
+
+h2. 1.2 Templates anpassen
+
+Am Beispiel des default Templates der Redaxo Demo das Templates wie folgt anpassen/erweitern:
+
+1.2.1 *Original (PHP TEIL):*
+
+bc.. // ------ DESCRIPTION/KEYWORDS
+$OOStartArticle = OOArticle::getArticleById($REX['START_ARTICLE_ID'], $REX['CUR_CLANG']);
+$meta_beschreibung = $OOStartArticle->getValue("art_description");
+$meta_suchbegriffe = $OOStartArticle->getValue("art_keywords");
+
+if($this->getValue("art_description") != "")
+  $meta_beschreibung = $this->getValue("art_description");
+
+if($this->getValue("art_keywords") != "")
+  $meta_suchbegriffe = $this->getValue("art_keywords");
+
+p. *ersetzen durch:*
+
+bc.. if(OOAddon::isAvailable('rexseo'))
+{
+  $meta = new rexseo_meta();
+  $meta_description   = $meta->get_description();
+  $meta_keywords      = $meta->get_keywords();
+  $meta_title         = $meta->get_title();
+  $meta_canonical     = $meta->get_canonical();
+  $meta_base          = $meta->get_base();
+}
+else
+{
+  $OOStartArticle     = OOArticle::getArticleById($REX['START_ARTICLE_ID'], $REX['CUR_CLANG']);
+  $meta_description   = $OOStartArticle->getValue("art_description");
+  $meta_keywords      = $OOStartArticle->getValue("art_keywords");
+
+  if($this->getValue("art_description") != "")
+    $meta_description = htmlspecialchars($this->getValue("art_description"));
+  if($this->getValue("art_keywords") != "")
+    $meta_keywords    = htmlspecialchars($this->getValue("art_keywords"));
+
+  $meta_title         = $REX['SERVERNAME'].' | '.$this->getValue("name");
+  $meta_canonical     = isset($_REQUEST['REQUEST_URI']) ? $_REQUEST['REQUEST_URI'] : '';
+  $meta_base          = 'http://'.$_SERVER['HTTP_HOST'].'/';
+}
+
+p. 1.2.2 *Original (HTML TEIL):*
+
+bc. <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?php print $REX['SERVERNAME'].' | '.$this->getValue("name"); ?></title>
+<meta name="keywords" content="<?php print htmlspecialchars($meta_suchbegriffe); ?>" />
+<meta name="description" content="<?php print htmlspecialchars($meta_beschreibung); ?>" />
+
+*ersetzen durch:* (ACHTUNG: eigenen Wert für @charset@ verwenden!)
+
+bc. <base href="<?php echo $meta_base; ?>" />
+<title><?php echo $meta_title; ?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="<?php echo $meta_keywords; ?>" />
+<meta name="description" content="<?php echo $meta_description; ?>" />
+<link rel="canonical" href="<?php echo $meta_canonical; ?>" />
+
+h2. 1.3 System Settings
+
+Abschließend müssen im Backend unter "System":index.php?page=specials noch folgende Einstellungen vorgenommen werden:
+
+# *$REX['SERVER']* anpassen: Domain der Webseite nach Schema @http://DOMAIN.TLD/@ eintragen, sprich _incl._ vorangestelltem "http://" und abschliessendem "/" (aber _ohne_ evtl. Unterverzeichnis!).
+# *$REX['MOD_REWRITE']* auf "TRUE" setzen.
+
+ </div>
+

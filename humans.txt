@@ -1,0 +1,11 @@
+# humanstxt.org/
+# The humans responsible
+
+# TEAM
+
+    Oliver Kreischer
+
+# THANKS
+
+	redaxo.org
+	

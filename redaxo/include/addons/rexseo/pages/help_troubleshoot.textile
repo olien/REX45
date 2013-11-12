@@ -1,0 +1,58 @@
+ <div id="troubleshoot">
+
+h1. .htaccess Dateien manuell installieren
+
+*Wichtig: Falls sich RexSEO beim install geweigert haben sollte die .htaccess Dateien automatisch zu installieren, ist dies geschehen weil in der Originaldatei für das Hosting wichtige Anweisungen gefunden wurden, d.h: Vor der manuellen Installation der RexSEO .htaccess Dateien unbedingt die Originale überprüfen und wichtige Einstellungen übernehmen!*
+
+Folgende Dateien aus dem Verzeichnis @install@ des Addons müssen in die korrespondierenden Verzeichnisse kopiert werden:
+* @./install/.htaccess@ -> @/.htaccess@ (@/@ = Stammverzeichnis der Webseite)
+* @./install/redaxo/.htaccess@ -> @/redaxo/.htaccess@
+
+h1. Vorschaubug in REDAXO 4.2.1 beheben
+
+bei REDAXO 4.2.1 funktioniert die Artikelvorschau aus dem Backend bei aktiviertem RexSEO nicht
+
+in content.inc.php im Ordner /pages Zeile 578:
+
+bc. $listElements[] = '<a href="../'.$REX["FRONTEND_FILE"].'?article_id=' . $article_id . '&amp;clang=' . $clang . '" onclick="window.open(this.href); return false;" '. rex_tabindex() .'>' . $I18N->msg('show') . '</a>';
+
+ersetzen mit:
+
+bc. $listElements[] = '<a href="../'.rex_getUrl($article_id,$clang).'" onclick="window.open(this.href); return false;" '. rex_tabindex() .'>' . $I18N->msg('show') . '</a>';
+
+damit ist dieser Bug behoben.
+
+h1. Anchors und das _base_ tag
+
+Bei Verwendung des @base@ tags funktionieren anchor links nicht, da sie nicht mehr auf dieselbe Seite verweisen. Mit folgendem jQuery script kann dieses Problem elegant gelöst werden:
+
+bc. // JQUERY ANCHORS & BASE TAG FIX
+$("a[href^='\#']").click(function(e){
+  e.preventDefault();
+  document.location.hash=this.href.substr(this.href.indexOf('#')+1);
+})
+
+*Hinweis:* Dieses script benötigt die "(jsopenwin)jQuery lib":http://jquery.com/ .
+Es sollte ferner nicht im @head@ Bereich des Templates stehen sondern am Ende vor @body@.
+
+h1. Sprachspezifische Zeichenersetzung in URLS
+
+Rexseo benutzt die Zeichenersetzung aus dem Redaxo Core, daher ist die verwendete Zeichentabelle nicht in Rexseo definiert, sondern in den Sprachdateien von Redaxo (@/redaxo/include/lang/*.lang@):
+
+bc. # Sprachspezifische Sonderzeichen für Url-Umschreibung
+special_chars = ä|ö|ü|Ä|Ö|Ü|ß|&
+special_chars_rewrite = ae|oe|ue|Ae|Oe|Ue|ss|und
+
+h1. 404 im ./files Ordner nicht per Redaxo ausgeben lassen
+
+Normalerweise wird bei einer nicht-existenten Datei im @./files/@ Ordner die Anfrage an Redaxo weitergeleitet und die entsprechende Fehlerseite ausgegeben. Sollte dies nicht gewünscht sein - sprich nur eine einfache 404 Meldung von Apache - dann muß man eine *Kopie*(!) der Datei @./redaxo/.htaccess@ in den files Ordner speichern: @./files/.htaccess@.
+
+
+
+ </div>
+
+
+"www.gn2-netwerk.de":http://www.gn2-netwerk.de
+
+
+

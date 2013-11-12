@@ -1,0 +1,252 @@
+/**
+ * RexSEO - URLRewriter Addon
+ *
+ * @link https://github.com/gn2netwerk/rexseo
+ *
+ * @author dh[at]gn2-netwerk[dot]de Dave Holloway
+ * @author code[at]rexdev[dot]de jdlx
+ *
+ * Based on url_rewrite Addon by
+ * @author markus.staab[at]redaxo[dot]de Markus Staab
+ *
+ * @package redaxo 4.3.x/4.4.x/4.5.x
+ * @version 1.6.3
+ */
+
+
+/* ADDON HEADLINE */
+#rex-title .rex-title-row h1 {
+  background:url('rexseo_logo.png') no-repeat 2px 2px;
+  text-indent:-9999px;
+  }
+span.addonversion {
+  display:block;
+  margin-left:260px;
+  font-size:10px;
+  color:silver;
+  text-indent:0;
+  }
+
+/* ADDON CHAPTER-LINKS */
+a.jsopenwin,
+a.blank,
+span.jsopenwin {
+  padding-right:16px;
+  background:url('jsopenwin.gif') no-repeat 100% 0 ;
+  }
+
+/* ADDON CONTENT */
+.rexseo  {
+  padding:2px 8px 8px 8px;
+  line-height:1.3;
+  }
+.rexseo p {
+  font-size:12px;
+  margin:0 0 20px 0;
+  }
+.rexseo .rex-warning p {
+  font-size:10px;
+  margin:0;
+  }
+.rexseo h1 {
+  color:#14568A;
+  font-size:18px;
+  border-bottom:1px solid #DFE9E9;
+  margin:26px 0 10px 0;
+  padding:0 0 2px 0;
+  }
+.rexseo h1:first-child,
+.rexseo #setup h1:first-child{
+  margin:0 0 10px 0;
+  }
+.rexseo h2 {
+  font-size:14px;
+  margin:2px 0 10px 0;
+  padding:0;
+  }
+.rexseo h3 {
+  font-size:13px;
+  margin:2px 0 10px 0;
+  padding:0;
+  }
+.rexseo h4 {
+  font-size:12px;
+  margin:2px 0 10px 0;
+  padding:0;
+  }
+.rexseo h5 {
+  font-size:11px;
+  margin:2px 0 10px 0;
+  padding:0;
+  }
+.rexseo cite,
+.rexseo code,
+.rexseo pre {
+  color:red;
+  font-family:monospace;
+  font-style:normal;
+  font-size:12px;
+  }
+.rexseo pre {
+  overflow:auto;
+  border:1px solid #CBCBCB;
+  background:#DFE9E9;
+  margin:2px 4px 8px 0;
+  padding:8px;
+  line-height:12px;
+  max-height:500px;
+  }
+.rexseo pre code {
+  color:#0000BB;
+  }
+.rexseo hr {
+  height:1px;
+  border:0;
+  border-top:1px solid silver;
+  margin:8px 0;
+  padding:0;
+  }
+.rexseo ul {
+  margin:0;
+  padding:0;
+  }
+.rexseo ul>li {
+  line-height:1.4;
+  background:#DFE9E9;
+  list-style-type:none;
+  margin:0 0 4px 0;
+  padding:4px 4px 4px 10px;
+  border:1px solid #CBCBCB;
+  border-radius:4px;
+  }
+.rexseo ul>li>strong:first-child {
+  font-size:14px;
+  display:inline-block;
+  width:100%;
+  border-bottom:1px solid #CBCBCB;
+  margin-bottom:4px;
+  }
+.rexseo ol ul>li>strong:first-child,
+.rexseo ul ul>li>strong:first-child {
+  font-size:12px;
+  display:inline;
+  border-bottom:0;
+  }
+.rexseo ul ul>li {
+  list-style-type:disc;
+  border:0;
+  padding:2px;
+  }
+.rexseo a.rex-form-submit,
+.rexseo a.rex-form-submit:link,
+.rexseo a.rex-form-submit:visited,
+.rexseo a.rex-form-submit:hover {
+  color:black;
+  text-decoration:none !important;
+  background:url('button.gif') repeat-x;
+  padding:2px 6px;
+  -moz-outline-radius:4px 4px 4px 4px;
+  border:0 none;
+  outline:1px solid #CBCBCB;
+  }
+#rexseo_robots {
+  /*height:100px;*/
+  }
+#rexseo_redirects {
+  /*height:100px;*/
+  }
+.rexseo_ticket {
+  margin:2px 0 2px 0;
+  }
+.rexseo_ticket .rexseo_date {
+  margin-right:15px;
+  }
+a.help-icon {
+  background:#DFE9E9 !important;
+  color:white !important;
+  font-size:10px;
+  font-weight:normal;
+  text-decoration:none !important;
+  padding:0 4px 0 4px !important;
+  border-radius:5px !important;
+  }
+a.help-icon:hover {
+  background:#3C9ED0 !important;
+  }
+.label-subline {
+  display:inline-block;
+  margin:6px 0 0 0;
+  color:#B8B8B8;
+  font-size:10px;
+  font-family: monospace;
+}
+.rexseo .highlight {
+  background-color: yellow !important;
+  color:black !important;
+  padding:2px 6px 2px 6px !important;
+  margin:2px !important;
+  border:1px solid silver;
+  border-right:1px solid gray;
+  border-bottom:1px solid gray;
+  border-radius:3px;
+  }
+ul#rexseo-redirect-list {
+  margin-left:155px;
+  list-style-type:none;
+  }
+table#rexseo-redirect-list {
+ /* -moz-outline-radius: 4px 4px 4px 4px;
+  border: 0 none;
+  outline: 1px solid #CBCBCB;*/
+  border-top: 1px solid #CBCBCB;
+  margin:0;
+  padding:0;
+  width:100%;
+  }
+table#rexseo-redirect-list td,
+table#rexseo-redirect-list th {
+  padding:4px;
+  }
+table#rexseo-redirect-list th {
+  color:gray;
+  }
+table#rexseo-redirect-list span.redirect-btn {
+  display:inline-block;
+  width:70px;
+  line-height:16px;
+  text-align:center;
+  background:#F0F0F0 url('button.gif') 0 -3px repeat-x;
+  -moz-outline-radius: 4px 4px 4px 4px;
+  border: 0 none;
+  outline: 1px solid #CBCBCB;
+  }
+table#rexseo-redirect-list span.redirect-btn.active {
+  color:#107C2C;
+  }
+table#rexseo-redirect-list span.redirect-btn.inactive {
+  color:#EA1144;
+  }
+
+/*GITHUB API*/
+.rexseo ul.github-api {
+  list-style-type:none;
+  }
+.rexseo ul.github-api li {
+  background:none;
+  border:0;
+  padding:0;
+  }
+.rexseo ul.github-api .github-date {
+  margin-right:15px;
+  }
+
+/*MULTI-CLANG LINKMAP HACK*/
+div.rex-widget p.rex-widget-icons a.open-clang-linkmap {
+  background-image: url('generic.gif') !important;
+  padding: 3px 0 0 !important;
+  text-align: center !important;
+  font-weight:bold;
+}
+div.rex-widget p.rex-widget-icons a.open-clang-linkmap.current {
+  color:#14568A !important;
+}

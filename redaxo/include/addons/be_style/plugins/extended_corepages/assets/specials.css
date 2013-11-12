@@ -1,0 +1,10 @@
+div#rex-form-system-setup div.rex-form-row label {font-weight: normal;padding-left: 0;width: 190px;}
+div#rex-form-system-setup fieldset.rex-form-col-1 div.rex-form-row p.rex-form-label-right label, div#rex-form-system-setup fieldset.rex-form-col-1 div.rex-form-row p.rex-form-read span, div#rex-form-system-setup fieldset.rex-form-col-1 div.rex-form-row p.rex-form-text input, div#rex-form-system-setup fieldset.rex-form-col-1 div.rex-form-row p select, div#rex-form-system-setup fieldset.rex-form-col-1 div.rex-form-row p textarea {width: 40%;}
+div#rex-form-system-setup div.rex-form-row.form-row-compact, .rex-form-row.form-row-compact label, .rex-form-row.form-row-compact span {padding: 0 0 1px !important;}
+div#rex-form-system-setup .rex-form-row.form-row-compact label {width:140px;}
+div#rex-form-system-setup .rex-form-row.form-row-compact span {width:auto !important;}
+div#rex-form-system-setup div.rex-widget input { width: 90px; }
+div#rex-form-system-setup p span.rex-form-notice, div#rex-form-system-setup fieldset.rex-form-col-1 div.rex-form-row p input.rex-form-submit {margin-left: 195px;}
+#phpinfo { padding:0;margin:0;font-family:monospace;font-size:12px;height:400px;overflow-x:hidden;overflow-y:scroll;}
+#phpinfo img,#phpinfo hr { display:none }
+#phpinfo a { color:#32353A !important; }

@@ -1,0 +1,25 @@
+h2. extended_corepages
+
+Das @be_style@ Plugin ersetzt Redaxo core pages durch eigene Varianten die um folgende features erweitert sind:
+
+h4. Addon
+
+* *Instant Install* beim Installieren wird das jeweilige Addon/Plugin gleichzeit auch schon aktiviert
+* *Asset Symlinks* ein feature für die Addon/Plugin Entwicklung: die frontend Asset Ordner @./files/addons/ADDONNAME/@ bzw. @./files/addons/ADDONNAME/plugins/PLUGINNAME@ können (reversibel) durch einen symlink auf den Ursprungsordner im backend verlinkt werden. Das erspart dem Entwickler edits an frontend assets in die backend assets übertragen zu müssen.
+* *UI tweaks* aktive Addons/Plugins werden klar hervorgehoben, Mischung von Status-Texten und Funktionslinks bereinigt
+
+h4. System
+
+* *Settings UI* Einstellmöglichkeit für @$REX['SESSION_DURATION']@, @$REX['USE_GZIP']@, @$REX['USE_ETAG']@, @$REX['USE_LAST_MODIFIED']@, @$REX['USE_MD5']@ hinzugefügt
+* *Infos* wichtigste Server/PHP Settings werden direkt angezeigt
+* *phpinfo* on click kann die komplette @phpinfo()@ Ausgabe eingeblendet werden
+* *Error Reporting* Eigene Settings getrennt für Front & Backend
+
+*Screenshot Addon Page*
+!http://dl.dropboxusercontent.com/u/10220684/screenshots/extended_corepages_addon.png!
+
+*Screenshot System Page*
+!http://dl.dropboxusercontent.com/u/10220684/screenshots/extended_corepages_specials.png!
+
+*Screenshot System Page - phpinfo*
+!http://dl.dropboxusercontent.com/u/10220684/screenshots/extended_corepages_specials_phpinfo.png!

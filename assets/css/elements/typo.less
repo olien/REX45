@@ -1,0 +1,163 @@
+// basecondition ~ less-framework ~ v2.2.3
+// copyright 2013 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// ----------------------------------------------------- ~ types
+// #types > .default-headlines ();
+// #types > .default-paragraphs ();
+// #types > .default-default-inline-elements ();
+// #types > .default-default-lists ();
+// #types > .default-other-elements ();
+
+#types {
+    .default-headlines () {
+        h1, h2, h3, h4, h5, h6 {
+            line-height: ceil(15px * 2.2);
+            text-rendering: optimizelegibility;
+            margin: ceil(20px / 2) 0;
+            clear: both;
+        }
+        h4,
+        h5,
+        h6 {
+            line-height: 15px;
+        }
+        h1 {
+            font-size: ceil(13px * 2.4);
+        }
+        h2 {
+            font-size: ceil(13px * 2.1);
+        }
+        h3 {
+            font-size: ceil(13px * 1.7);
+        }
+        h4 {
+            font-size: ceil(13px * 1.25);
+        }
+        h5 {
+            font-size: 13px;
+        }
+        h6 {
+            font-size: ceil(13px * 0.8);
+        }
+        * + h1,
+        * + h2,
+        * + h3,
+        pre + * {
+            margin-top: ceil(20px * 1.8);
+        }
+        h1 + h2,
+        h2 + h3 {
+            margin-top: ceil(20px / 2);
+        }
+    }
+    
+    // ----------------------------------------------------- ~ paragraphs
+    .default-paragraphs() {
+        p {
+            .link();
+            margin: ceil(20px / 2 ) 0;
+            line-height: ceil(15px * 1.2);
+            
+            &.lead {
+                font-size: ceil(13px * 1.4);
+                line-height: ceil(15px * 1.3);
+            }
+        }
+    }
+    
+    // ----------------------------------------------------- ~ inline elements
+    .default-inline-elements() {
+        b,
+        strong {
+            font-weight: bold;
+        }
+        em {
+            font-style: italic;
+        }
+        strike {
+            text-decoration: line-through;
+        }
+        span {
+            
+        }
+        pre,
+        code {
+            .border-radius(3px);
+            
+            border: 1px solid lightblue;
+            color: #518BAB;
+            font-family: @mono-font-family;
+            padding: 3px;
+        }
+        small {
+            font-size: 85%;
+        }
+        cite {
+            font-weight: normal;
+        }
+    }
+    
+    // ----------------------------------------------------- ~ lists
+    .default-lists () {
+        dl,
+        ol,
+        ul {
+        
+        }
+        ol,
+        ul {
+            li {
+                line-height: ceil(15px * 1.2);
+            }
+        }
+        dl {
+            dd,
+            dl {
+                line-height: ceil(15px * 1.2);
+            }
+            dd {
+            
+            }
+            dt {
+            
+            }
+        }
+    }
+    
+    // ----------------------------------------------------- ~ other elements
+    .other-elements () {
+        address {
+            display: block;
+            font-style: normal;
+        }
+        blockquote {
+            font-size: ceil(13px * 1.4);
+            line-height: ceil(15px * 1.3);
+            
+            p {
+            
+            }
+            small {
+                display: block;
+                
+                &:before {
+                    content: '\2014 \00A0';
+                }
+            }
+            &:before
+            &:after {
+                content: "";
+            }
+        }
+        abbr[title],
+        abbr[data-original-title] {
+            cursor: help;
+            border-bottom: 1px dotted @gray-light;
+        }
+        abbr.initialism {
+            font-size: 90%;
+            text-transform: uppercase;
+        }
+    }
+}

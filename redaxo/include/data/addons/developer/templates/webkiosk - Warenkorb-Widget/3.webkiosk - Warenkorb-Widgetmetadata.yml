@@ -1,0 +1,8 @@
+name: 'webkiosk - Warenkorb-Widget'
+active: false
+attributes:
+    categories:
+        all: '1'
+    ctype: {  }
+    modules:
+        1: { all: '1' }

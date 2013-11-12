@@ -1,0 +1,102 @@
+ <div id="settings">
+
+h1. 1. RexSEO Einstellungen
+
+h2. 1.1 Backend/Addon:
+
+* *Meta Defaults*
+Diese Default Werte verringern den Arbeitsaufwand bezügl. der seitenweiten Definition von Beschreibung und Suchbegriffen.
+## *Description:*
+Für alle Artikel die keinen Eintrag unter *Metadaten/Sonstiges* > *Beschreibung* haben.
+## *Keywords:*
+Für alle Artikel die keinen Eintrag unter *Metadaten/Sonstiges* > *Suchbegriffe* haben.
+* *Title Elemente:*
+Dieses Schema definiert die Elemente der normalen title Generierung, sofern kein expliziter rexseo title ("Metadaten/Sonstiges") für den Artikel definiert wurde (*Hinweis:* auch hier können die Platzhalter verwendet werden ). Folgende Platzhalter stehen zur Verfügung:
+## @%B@ - Breadcrumb aus der Kategorie/Artikel-Hierarchie
+## @%N@ - Name des Artikels
+## @%C@ - Name der Artikel-Kategorie
+## @%S@ - REX SERVERNAME bzw. HTTP_HOST als fallback
+* *URL Rewrite Optionen*
+## *Schema:*
+*** *RexSEO:* Startartikel und allgemeine Artikel einer Kategorie werden unterschiedlich behandelt:
+Startartikel -> @./Kategorie.html@
+allgem. Artikel -> @./Kategorie/allgem. Artikel.html@
+*** *url_rewrite:* Startartikel und allgemeine Artikel einer Kategorie werden gleichrangig behandelt:
+Startartikel -> @./Kategorie/Startartikel.html@
+allgem. Artikel -> @./Kategorie/allgem. Artikel.html@
+## *Endung:*
+Definiert die Endung der URL.
+## *Lang slug:*
+Bei mehrsprachigen Websites kann optional das Sprachkürzel (lang slug) _einer Sprache_ aus der URL ausgelassen werden.
+## *Parameter Rewrite:*
+Definiert ob die normale Schreibweise für angehängte Parameter verwendet werden soll @?param1=wert1&param2=wert2@, oder ob die Parameter umgeschrieben werden @++/param1/wert1/param2/wert2@.
+## *Abtrenner:*
+Wenn die Parameter umgeschrieben werden, definiert dieser string die Abgrenzung zwischen eigentlicher URL, und den Parametern (default: @++@).
+## *Startseite:*
+Definiert die URL für die Startseite.
+## *Sprache:*
+Definiert bei mehrsprachigen Webseiten die Sprache der Startseite (Option wird nur bei mehrsprachigen Sites angezeigt).
+## *URL-Encoding:*
+*** *Zeichersetzung per .lang Datei:* non-ASCII Zeichen werden über die Redaxo Core-Funktion @rex_parse_article_name()@ über die in der .lang Datei definierte Ersetzung (special_chars->special_chars_rewrite) umgeschrieben.
+*** *Kodierung per urlencode:* Zeichen werden werden nicht ersetzt (Ausnahme: "/" wird zu "-") sondern per urlencode in eine RFC konforme URL encoded.
+* *URL Resolve Optionen*
+## *Aufruf via article_id:*
+Definiert ob Artikel _auch_ über normale Seitenaufrufe per @index.php?article_id=..@ aufgerufen werden dürfen, und wenn ja in welcher Form auf diese Anfragen reagiert werden soll. Optionen:
+*** *Nicht zulässig, nur rewrite URLs*
+*** *Zulässig, 301 Weiterleitung auf korrekt URL*
+Weiterleitung mit 301 Meldung an den anfragenden client, näheres dazu siehe _301 Weiterleitungen_ weiter unten.
+*** *Zulässig ohne Weiterleitung*
+Der Artikel wird ohne Weiterleitung angezeigt, der anfragende client erfährt _nicht_ das der Artikel eigentlich eine andere URL hat. Diese Option sollte nach Möglichkeit nicht verwendet werden, da eben auch eine anfragende Suchmaschine nichts vor der richtigen URL erfährt - Folge: Artikel können beim Indizieren u.U. unter beiden URLs gefunden werden und die Webseite deswegen beim ranking wegen "(blank)duplicate content":http://www.google.com/support/webmasters/bin/answer.py?hl=de&answer=66359 heruntergesetzt werden.
+## *Genauigkeit:*
+Definiert ob Artikel nur über die genaue rewrite URL ausgegeben werden, oder ob versucht werden soll anhand Ähnlichkeiten der URL einen passenden Artikel zu finden und auszugeben.
+* *Weiterleitungen*
+Artikel für die eine Weiterleitung eingerichtet wurde, sind nachwievor unter der in der Weiterleitung angegebenen alten URL erreichbar, aber dem user agent (primär den Suchmaschinen) wird dabei einerseits mitgeteilt, daß die aufgerufene URL nicht mehr aktuell ist, und andererseits unter welcher neuen URL die Seite numehr erreichbar ist. Dadurch können Suchmaschinen gezielt ihren Index aktualisieren.
+## *Auto-Redirects:*
+Sofern in der Struktur (Kategorie/Artikelnamen), den Einstellugen von RexSEO, oder durch andere Addons Änderungen vorgenommen wurden, die zu geänderten URLs führen, können diese Änderungen vom Addon automatisch erkannt und eine passende Weiterleitung eingerichtet werden. Als Verfallsdatum wird der Wert aus *Default Expire* verwendet.
+*** *Vollautomatisch:* Redirects werden in die DB geschrieben und aktiviert.
+*** *Halbautomatisch:* Redirects werden nur in die DB geschrieben aber nicht aktiviert.
+## *Default Expire:* Standardwert für das Verfallsdatum von Weiterleitungen.
+## *Parameter einer Weiterleitung (DB-Datensatz):*
+*** *Status:* definiert ob die Weiterleitung aktiv ist
+*** *alte URL:* die URL unter welcher der Artikel vorher erreichbar war
+*** *umleiten nach:* der Artikel für den die Weiterleitung gilt
+*** *HTTP Status:* gibt dem aufrufenden user agent/Suchmaschine Informationen über Grund/Dauerhaftigkeit der Umleitung. "(blank)Details zu HTTP Status Codes":http://de.wikipedia.org/wiki/HTTP-Statuscode#3xx_.E2.80.93_Umleitung
+*** *Verfallsdatum:* Datum bis zu welchem die Umleitung aktiviert ist.
+*** *Ersteller:* Wenn die Weiterleitung manuell erstellt wurde der login des erstellenden Users, bzw. "rexseo" falls automatisch von RexSEO angelegt.
+## *Batch Submit*
+Weiterleitungen können wahlweise auch in einem Rutsch (wie in Vorversionen) in der dafür vorgesehenen textarea eingegeben werden. Die notwendigen Parameter für einen solchen batch submit sind *URL*, *Artikel-ID* und *Sprach-ID* getrennt durch Leerzeichen: @alter_pfad/alter_artikel.html 4 0@ Als HTTP Status wird 301 verwendet.
+* *robots.txt:*
+Diese Datei dient als "Hausordnung" und steuert ob bzw. wie die Webseite von einer Suchmaschine indiziert werden darf. Die von RexSEO vorgenommene Standard-Einstellung erlaubt alle Suchmaschinen und alle Bereiche der Webseite. Außerdem wird in ihr auf die "(blank)Google sitemap":http://de.wikipedia.org/wiki/Sitemaps verlinkt, welche von RexSEO automatisch erzeugt wird. Details für gezielte Anpassung können u.a. in diesem "(blank)Wikipedia Artikel zu robots.txt":http://de.wikipedia.org/wiki/Robots_Exclusion_Standard nachgeschlagen werden.
+
+h2. 1.2 Artikel
+
+Die artikel-spezifischen Einstellungen sind auf den Artikelseiten unter *Metadaten/Sonstiges* zu finden.
+*Hinweis:* Aufgrund von Umstrukuturierungen und Umbenennungen der Metafelder können Beichnungen je nach Installationstyp (frisch vs. update) unterschiedlich sein. Alte Bezeichnungen sind daher hinter der neuen in Klammer notiert.
+
+* *Allgemein*
+## *Name/Bezeichnung:*
+Wird für die Navigation(URL) und - sofern kein anderer Wert weiter unten in *RexSEO Einstellungen* > *Title* definiert wird - das @title@ Attribut der Seite verwendet (Seitentitel oben im Browserfenster).
+## *Beschreibung:*
+Wird hier eine Description(Beschreibung) eingetragen, überschreibt sie die im RexSEO Backend definierte default Description.
+## *Suchbegriffe:*
+Werden hier Keywords(Suchbegriffe) eingetragen, überschreiben sie die im RexSEO Backend definierten default Keywords.
+* *RexSEO Rewrite _{font-style:normal;font-weight:normal;}(RexSEO Einstellungen)_*
+## *Custom URL:* (Manuelle URL)
+Wird hier eine eigene URL eingetragen, wird diese anstatt jener verwendet, die sich normalerweise aus Kategorie/Artikelname ergibt.
+## *Custom Canonical URL:* (Manuelle Canonical URL)
+Wird hier eine manuelle Canonical URL eingetragen, wird diese anstatt der automatisch ermittelten verwendet.
+## *Custom Page Title:* (Page Title)
+Dieser Wert wird für das @title@ Attribut der Seite verwendet und überschreibt den sich normalerweise aus *Name/Bezeichnung* ableitenden title.
+* *RexSEO Sitemap*
+## *Sitemap Priority:* (Google Sitemap Priority)
+Hier kann eine explizite Seitenpriorität für die google-sitemap eingetragen werden, welche den automatisch ermittelten Wert überschreibt.
+## *Sitemap Changefreq:*
+Hier kann eine explizite Changefreq für die google-sitemap eingetragen werden, welche den automatisch ermittelten Wert überschreibt.
+## *Sitemap Output:*
+Hier kann festgelegt werden, ob das Erscheinen des Artikel in der Sitemap an den online/offline Status gebunden ist (auto), oder wahlweise ein manueller Wert ausgewählt werden.
+
+ </div>
+
+"www.gn2-netwerk.de":http://www.gn2-netwerk.de
+
+

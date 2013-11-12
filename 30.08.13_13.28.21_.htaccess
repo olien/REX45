@@ -1,0 +1,59 @@
+###
+### RexSEO Addon htaccess file
+###
+### @link https://github.com/gn2netwerk/rexseo
+###
+### @author dh[at]gn2-netwerk[dot]de Dave Holloway
+### @author code[at]rexdev[dot]de jdlx
+###
+### Based on url_rewrite Addon by
+### @author markus.staab[at]redaxo[dot]de Markus Staab
+###
+### @package redaxo 4.3.x/4.4.x
+### @version 1.5.3
+###
+
+
+### DO NOT REMOVE THE FOLLOWING "REXSEO REDIRECTS BLOCK" DELIMITERS!
+### REXSEO REDIRECTS BLOCK
+### /REXSEO REDIRECTS BLOCK
+
+
+<IfModule mod_rewrite.c>
+### ENABLE REWRITING
+RewriteEngine On
+RewriteBase /
+
+### SUBDOMAIN REDIRECTS
+### 1. uncomment "RewriteCond" & "RewriteRule"
+### 2. use only one(!) of the following two redirects
+### 3. replace DOMAIN.TLD with your domain
+
+### SUBDOMAIN REDIRECT www.DOMAIN.TLD -> DOMAIN.TLD
+# RewriteCond %{HTTP_HOST} ^www\.DOMAIN\.TLD$
+# RewriteRule ^(.*)$ http://DOMAIN.TLD/$1 [L,R=301]
+
+### SUBDOMAIN REDIRECT *.DOMAIN.TLD -> www.DOMAIN.TLD
+# RewriteCond %{HTTP_HOST} ^DOMAIN\.TLD$
+# RewriteRule ^(.*)$ http://www.DOMAIN.TLD/$1 [L,R=301]
+
+### REDIRECT SITEMAP.XML -> REXSEO SITEMAP FUNCTION (XML)
+RewriteRule ^sitemap\.xml$ index.php?rexseo_func=googlesitemap [NC,L]
+### REDIRECT SITEMAP.JSON -> REXSEO SITEMAP FUNCTION (JSON FORMAT)
+# RewriteRule ^sitemap\.json$ index.php?rexseo_func=googlesitemap&mode=json [NC,L]
+
+### REDIRECT ROBOTS.TXT -> REXSEO ROBOTS FUNCTION
+RewriteRule ^robots\.txt$ index.php?rexseo_func=robots [NC,L]
+
+### DON'T REWRITE DIRS/FILES
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{REQUEST_URI} !^redaxo/.*
+RewriteCond %{REQUEST_URI} !^files/.*
+RewriteCond %{REQUEST_URI} !^google(.*).html*
+
+### REWRITE ALL OTHER REQUESTS TO INDEX.PHP
+RewriteRule ^(.*)$ index.php?%{QUERY_STRING} [L]
+
+</IfModule>

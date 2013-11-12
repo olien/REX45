@@ -1,0 +1,69 @@
+// basecondition ~ less-framework ~ v3.0
+// copyright 2013 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// ----------------------------------------------------- ~ colors
+
+@black:                      #000;
+@white:                      #fff;
+
+@gray-darker:                lighten(#000, 13.5%); // #222
+@gray-dark:                  lighten(#000, 20%);   // #333
+@gray:                       lighten(#000, 33.5%); // #555
+@gray-light:                 lighten(#000, 60%);   // #999
+@gray-lighter:               lighten(#000, 93.5%); // #eee
+
+@blue:                       #049cdb;
+@blue-dark:                  #0064cd;
+@h5blue:                     #b3d4fc;
+@cyan:                       #08cccc;
+@green:                      #46a546;
+@red:                        #9d261d;
+@yellow:                     #ffc40d;
+@orange:                     #f89406;
+@pink:                       #c3325f;
+@purple:                     #7a43b6;
+
+// ----------------------------------------------------- ~ fonts
+
+@sans-font-family:           "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+@serif-font-family:          Georgia, "Times New Roman", Times, serif;
+@lucida-font-family:         "Lucida Sans Unicode", "Lucida Grande", Helvetica, sans-serif;
+@mono-font-family:           Monaco, Menlo, Consolas, "Courier New", monospace;
+
+// ----------------------------------------------------- ~ media queries from bootstrap
+
+// Extra small screen / phone
+// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
+@screen-xs:                  480px;
+@screen-xs-min:              @screen-xs;
+@screen-phone:               @screen-xs-min;
+
+// Small screen / tablet
+// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
+@screen-sm:                  768px;
+@screen-sm-min:              @screen-sm;
+@screen-tablet:              @screen-sm-min;
+
+// Medium screen / desktop
+// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
+@screen-md:                  992px;
+@screen-md-min:              @screen-md;
+@screen-desktop:             @screen-md-min;
+
+// Large screen / wide desktop
+// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
+@screen-lg:                  1200px;
+@screen-lg-min:              @screen-lg;
+@screen-lg-desktop:          @screen-lg-min;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max:              (@screen-sm-min - 1);
+@screen-sm-max:              (@screen-md-min - 1);
+@screen-md-max:              (@screen-lg-min - 1);
+
+// ----------------------------------------------------- ~ global grid settings
+
+@base-number-of-columns:     12;
+@base-column-width:          60px;
+@base-gutter-width:          20px;

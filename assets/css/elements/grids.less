@@ -1,0 +1,169 @@
+// basecondition ~ less-framework ~ v3.0
+// copyright 2013 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// ----------------------------------------------------- ~ grids
+
+// @namespace: #grids
+
+#grids {
+    
+    // @methode: .gs-1200
+    // @usage: #grids > .gs-1200();
+    
+    .gs-1200() {
+        article {
+            #grid > .wrapper(12, 70px, 30px);
+        }
+        // 12 columns
+        section.grid-12-columns {
+            #grid > .wrapper(12, 70px, 30px);
+            
+            .row {
+                #grid > .row(30px);
+                #grid > .write-columns(col-, 12, 70px, 30px);
+                #grid > .write-offsets(offset-, 12, 70px, 30px);
+            }
+        }
+        // 12 float columns
+        section.grid-12-float-columns {
+            #base > .center();
+            width: 1170px;
+            
+            .row {
+                #grid > .row(0);
+                #grid > .write-columns(col-, 12, 5.982905983%, 2.564102564%);
+                #grid > .write-offsets(offset-, 12, 5.982905983%, 2.564102564%);
+                
+                [class*="col-"] {
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+        // 16 columns
+        section.grid-16-columns {
+            #grid > .wrapper(16, 45px, 30px);
+            
+            .row {
+                #grid > .row(30px);
+                #grid > .write-columns(col-, 16, 45px, 30px);
+                #grid > .write-offsets(offset-, 16, 45px, 30px);
+            }
+        }
+    }
+    
+    // @methode: .gs-960
+    // @usage: #grids > .gs-960();
+    
+    .gs-960() {
+        article {
+            #grid > .wrapper();
+        }
+        section.grid-12-columns {
+            #grid > .wrapper();
+            
+            .row {
+                #grid > .row();
+                #grid > .write-columns();
+                #grid > .write-offsets();
+            }
+        }
+        section.grid-12-float-columns {
+            #base > .center();
+            width: 940px;
+            
+            .row {
+                #grid > .row(0);
+                #grid > .write-columns(col-, 12, 6.382978723%, 2.127659574%);
+                #grid > .write-offsets(offset-, 12, 6.382978723%, 2.127659574%);
+                
+                [class*="col-"] {
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+        section.grid-16-columns {
+            #grid > .wrapper(16, 40px, 20px);
+            
+            .row {
+                #grid > .row(20px);
+                #grid > .write-columns(col-, 16, 40px, 20px);
+                #grid > .write-offsets(offset-, 16, 40px, 20px);
+            }
+        }
+    }
+    
+    // @methode: .gs-768
+    // @usage: #grids > .gs-768();
+    
+    .gs-768() {
+        article {
+            #grid > .wrapper(12, 42px, 20px);
+        }
+        section.grid-12-columns {
+            #grid > .wrapper(12, 42px, 20px);
+            
+            .row {
+                #grid > .row(20px);
+                #grid > .write-columns(col-, 12, 42px, 20px);
+                #grid > .write-offsets(offset-, 12, 42px, 20px);
+            }
+        }
+        section.grid-12-float-columns {
+            #base > .center();
+            width: 724px;
+            
+            .row {
+                #grid > .row(0);
+                #grid > .write-columns(col-, 12, 5.801104972%, 2.762430939%);
+                #grid > .write-offsets(offset-, 12, 5.801104972%, 2.762430939%);
+                
+                [class*="col-"] {
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+        section.grid-16-columns {
+            #grid > .wrapper(16, 34px, 12px);
+            
+            .row {
+                #grid > .row(20px);
+                #grid > .write-columns(col-, 16, 34px, 12px);
+                #grid > .write-offsets(offset-, 16, 34px, 12px);
+            }
+        }
+    }
+    
+    // @methode: .gs-480
+    // @usage: #grids > .gs-480();
+    
+    .gs-480() {
+        article,
+        section.grid-12-columns,
+        section.grid-12-float-columns,
+        section.grid-16-columns,
+         {
+            width: auto;
+            
+            .row {
+                margin: 0;
+                
+                [class*="col-"] {
+                    margin: 0;
+                    width: auto;
+                    float: inherit;
+                    display: block;
+                }
+                [class*="offset-"] {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}

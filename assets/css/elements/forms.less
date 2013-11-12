@@ -1,0 +1,90 @@
+// basecondition ~ less-framework ~ v2.2.3
+// copyright 2013 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// ----------------------------------------------------- ~ forms
+// #forms > .default-form();
+
+#forms {
+    .default-form() {
+        form {
+            #unset > .distances();
+            margin: 0 0 20px;
+            
+            #form > .font-shorthand(13px, normal, 15px);
+            #form > .input-text(#999, #ff0000);
+            #form > .input-border(#ccc, #eee, 3px);
+            #form > .input-background(#f5f5f5, #f9f9f9);
+            
+            fieldset {
+                #unset > .distances();
+                border: 0;
+            }
+            legend {
+                #unset > .distances();
+                display: block;
+                width: 100%;
+                margin-bottom: 20px;
+                font-size: 13px * 1.5;
+                line-height: 15px * 2;
+                color: #333;
+                border: 0;
+                border-bottom: 1px solid #e5e5e5;
+            
+                small {
+                    font-size: 15px * .75;
+                    color: #999;
+                }
+            }
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            textarea,
+            input {
+                #form > .placeholder(#ccc);
+            }
+            input {
+                &[type="text"],
+                &[type="password"],
+                &[type="email"],
+                &[type="url"],
+                &[type="search"] {
+                    #box > .display(inline-block);
+                    display: inline-block;
+                    height: 15px;
+                    padding: 4px 6px;
+                    margin-bottom: 15px / 2;
+                    vertical-align: middle;
+                }
+                &[type="file"] {
+                    width: auto;
+                }
+                &[disabled="disabled"] {
+                
+                }
+                &[type="checkbox"],
+                &[type="radio"] {
+                    margin: 4px 0 0;
+                    line-height: normal;
+                    width: auto;
+                }
+                &[type="submit"] {
+                    width: auto;
+                }
+            }
+            select {
+            
+            }
+            textarea {
+                height: auto;
+            }
+            button {
+                &.submit,
+                &[type="submit"] {
+                
+                }
+            }
+        }
+    }
+}

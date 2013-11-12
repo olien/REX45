@@ -1,0 +1,4 @@
+addon_reinstall_question             = Achtung: bei re-Installation wird auch eine evtl. vorhandene install.sql ausgeführt d.h. Addon/Plugin tables werden in den Urzustand zurückgesetzt und evtl. vorhandene Daten überschrieben - fortfahren?
+addon_install_question               = Achtung: bei Installation wird auch eine evtl. vorhandene install.sql ausgeführt d.h. Addon/Plugin tables werden in den Urzustand zurückgesetzt und evtl. bereits vorhandene Daten aus einer früheren Installation überschrieben - fortfahren?
+specials_clear_all_caches_but_images = Cache <b>ohne Bilder</b> löschen
+delete_cache_but_images_message      = Cache wurde gelöscht, Bilder Cache blieb erhalten

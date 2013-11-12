@@ -1,0 +1,20 @@
+h3. Wofür soll das gut sein?
+
+Bei der Addon/Plugin Enwicklung muß man i.d.R die frontend Assets editieren, die beim install von Redaxo nach @./files/addons/ADDONNAME/@ bzw. @./files/addons/ADDONNAME/plugins/PLUGINNAME/@ kopiert wurden.
+Damit man diese edits nicht ständig zurück in die eigentlichen files des Addons/Plugins übertragen muß, sie evtl. versehentlich überschreibt o.ä. , ist eben ein symlink auf den original @./files@ Ordner das Mittel der Wahl.
+
+h3. Warum kann man Addons mit Plugins nicht symlinken?
+
+In der aktuellen Version ist das Szenario "Addon & enthaltene Plugins symlinken" noch nicht umgesetzt - daher ist vorläufig die Option für Addons die Plugins enthalten deaktiviert.
+
+h3. Warum kann man ein ge-symlinktes Addon/Plugin nicht re-installieren?
+
+Da der frontend Asset-Ordner auf den backend Ordner gesymlinkt ist wäre diese Aktion sinn- & wirkungslos.
+
+h3. Was passiert beim symlinken?
+
+Der original Asset Ordner wird umbenannt indem ein @~@ (tilde) an den Namen angehängt wird - es wird nie etwas gelöscht.
+
+h3. Was passiert beim unlinken?
+
+Der Symlink wird gelöscht, und danach wieder - wie bei einer normalen Installation - der backend Ordner @./files/@ an die entsprechende Stelle im frontend neu kopiert. *Wichtig:* im Gegensatz zu einer normalen Installation wird eine eventl. @install.sql@ *nicht* ausgeführt!

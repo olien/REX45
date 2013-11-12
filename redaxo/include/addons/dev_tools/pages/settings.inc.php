@@ -1,51 +1,32 @@
 <div class="rex-addon-output">
 
-<h2 class="rex-hl2">Informationen</h2>
-<div class="rex-area-content">
-<p>
-Anleitung</a>
-</p>
+<h2 class="rex-hl2">Einstellungen Bild Overlay</h2>
+	<div class="rex-area-content">
+		- Bild verwalten<br/>
+		- Position angeben (links,zentriert, rechts)<br/>
+		- Opacity angeben (evtl. Slider im Frontend)
+		<br/>
+		- Grid anzeigen<br/>
+		- Grid Einstellung<br/>
+	</div>
 </div>
-</div>
-
 
 <div class="rex-addon-output">
+	<h2 class="rex-hl2">Einstellungen Rulers Overlay</h2>
+	<div class="rex-area-content">
+		https://github.com/mark-rolich/RulersGuides.js<br/>
 
-<h2 class="rex-hl2">Einstellungen</h2>
-<div class="rex-area-content">
-  <div class="rex-form">	
-  <form action="index.php" method="get">
-		<input type="hidden" name="page" value="email_obfuscator" />
-	    <input type="hidden" name="subpage" value="" />
-    	<input type="hidden" name="func" value="update" />
-		<fieldset class="rex-form-col-1">
-      <div class="rex-form-wrapper">
-        <div class="rex-form-row">
-		</div>
-        <div class="rex-form-row">
-
-        <div class="rex-form-row">
-        <div class="rex-form-row">
-			<p>
-        		<input type="submit" class="rex-form-submit" name="sendit" value="Einstellungen speichern" />
-          	</p>
-		</div>
-        
-			</div>
-    </fieldset>
-  </form>
-  </div>
-</div>
+	</div>
 
 </div>
-
 
 <div class="rex-addon-output">
+	<h2 class="rex-hl2">Einstellungen Grid Overlay</h2>
+	<div class="rex-area-content">
+		http://bohemianalps.com/tools/grid/<br/>
 
-<h2 class="rex-hl2">Credits</h2>
-<div class="rex-area-content">
-<p>
-Credits</a>
-</p>
-</div>
+		- Grid zeigen<br/>
+		- Grid Farbe
+		- Grid allgemein<br/>
+	</div>
 </div>

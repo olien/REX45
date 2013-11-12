@@ -19,9 +19,7 @@ if (!$REX['REDAXO']) {
 rex_register_extension('OUTPUT_FILTER', 'dev_tools_opf', array(), REX_EXTENSION_LATE);
 
 
-	function dev_tools_opf($params)
-		
-	{
+function dev_tools_opf($params) {
 		
 		$content = $params['subject'];
 						
@@ -34,7 +32,7 @@ rex_register_extension('OUTPUT_FILTER', 'dev_tools_opf', array(), REX_EXTENSION_
 			  width:100%;
 			  height:100%;
 			  z-index:10000;
-			  background: url(http://2.bp.blogspot.com/-ZrxacXiov7w/TZIxzK-uKdI/AAAAAAAACJU/1IZ0eSJxbqs/s1600/Mac+lion-Full+screen+app.JPG) top center no-repeat;
+			  background: url(./files/layout.jpg) top center no-repeat;
 		  }
 		</style>
 		';
